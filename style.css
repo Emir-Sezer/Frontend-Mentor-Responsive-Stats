@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;700&family=Lexend+Deca:wght@100;300;400&display=swap");
+
+:root {
+    --main-background: hsl(233, 47%, 7%);
+    --card-background: hsl(244, 38%, 16%);
+    --accent: hsl(277, 64%, 61%);
+
+    --main-heading-stats: hsl(0, 0%, 100%);
+    --main-pragraph: hsla(0, 0%, 100%, 0.75);
+    --stat-headings: hsla(0, 0%, 100%, 0.6);
+
+    --heading: "Inter", sans-serif;
+    --body: "Lexend Deca", sans-serif;
+
+    --transition: 0.8s ease;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+  /* height: auto; */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/** Layout **/
+
+body{ 
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background-color: var(--main-background);
+    padding: 1.25rem;
+}
+
+article{
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: hidden;
+
+    background-color: var(--card-background);
+    color: var(--main-pragraph);
+    transition: var(--transition);
+
+    border-radius: .5rem;
+    box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.2);
+}
+
+article > * {
+    flex-basis: 50%;
+}
+
+
+
+/** Card Content **/
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+}
+
+.card-heading {
+    font-size: clamp(1.38rem, calc(1.05rem + 1.65vw), 2.19rem);
+    font-family: var(--heading);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    color: var(--main-heading-stats);
+
+    margin-bottom: 0.75rem;
+    transition: var(--transition);
+}
+
+.card-heading span {
+    color: var(--accent);
+}
+
+.card-pragraph{
+    font-size: clamp(0.75rem, calc(0.65rem + 0.50vw), 1rem);
+    font-family: var(--body);
+    font-weight: 300;
+    line-height: 1.9;
+    text-align: center;
+    margin-bottom: 1.25rem;
+    transition: var(--transition);
+}
+
+/** Statictics **/
+
+.statistics-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    transition: var(--transition);
+}
+
+.statistic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.statistic p {
+    font-size: clamp(1rem, calc(0.85rem + 0.76vw), 1.38rem);
+    font-family: var(--heading);
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--main-heading-stats);
+    transition: var(--transition);
+}
+  
+  .statistic span {
+    font-size: 0.75rem;
+    font-family: var(--body);
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: var(--stat-headings);
+}
+
+.img-container{
+    display: grid;
+    background-color: var(--accent);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    mix-blend-mode: multiply;
+    transition: var(--transition);
+}
+
+
+/**! Media Queries **/
+
+/** Over 500px **/
+
+@media (min-width: 500px) {
+    article {
+        max-width: 37.5rem;
+    }
+    .card-content {
+        padding: 1.8rem;
+    }
+    .statistics-container {
+        flex-direction: row;
+        gap: 3rem;
+        padding: 1.25rem;
+    }
+}
+
+/** Over 830px **/
+
+@media (min-width: 830px) {
+    article {
+        max-width: 69.38rem;
+        flex-direction: row;
+    }
+    .card-content {
+        padding: 4.3rem;
+        justify-content: space-between;
+    }
+    .card-heading {
+        text-align: start;
+        margin-bottom: 1.8rem;
+    }
+    .card-pragraph {
+        text-align: start;
+    }
+    
+    .statistics-container {
+        width: 90%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1.25rem;
+        padding: 1.25rem 1.25rem 0px 0px;
+    }
+    .statistic {
+        align-items: flex-start;
+    }   
+}
+
+/** Over 900px **/
+
+@media (min-width: 900px) {
+    .card-content {
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 4.375rem;
+    }
+    
+}
+
+/**! Animation **/
+
+.entrance-animation {
+    -webkit-animation: entrance-animation 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: entrance-animation 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes entrance-animation {
+    0% {
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+  @keyframes entrance-animation {
+    0% {
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+      opacity: 1;
+    }
+}
